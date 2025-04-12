@@ -11,18 +11,37 @@ import { HobbiesSection } from "@/components/sections/HobbiesSection";
 import { ContactSection } from "@/components/sections/ContactSection";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { BackToTop } from "@/components/back-to-top";
-import { LoadingScreen } from "@/components/loading-screen";
-import { StickyCursor } from "@/components/sticky-cursor";
 import { motion } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
+
+const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
+const LoadingScreen = dynamic(
+  () =>
+    import("@/components/loading-screen").then((mod) => ({
+      default: mod.LoadingScreen,
+    })),
+  { ssr: false }
+);
+const StickyCursor = dynamic(
+  () =>
+    import("@/components/sticky-cursor").then((mod) => ({
+      default: mod.StickyCursor,
+    })),
+  { ssr: false }
+);
+
+// Import animations directly
 import developerAnimation from "@/animations/developer-animation.json";
 import backgroundAnimation from "@/animations/background-animation.json";
 
-const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
-
 export default function Home() {
+  const [mounted, setMounted] = useState(false);
   const contactRef = useRef<HTMLDivElement>(null);
   const projectsRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const scrollToSection = (ref: React.RefObject<HTMLDivElement | null>) => {
     if (ref.current) {
@@ -32,6 +51,10 @@ export default function Home() {
       });
     }
   };
+
+  if (!mounted) {
+    return null;
+  }
 
   return (
     <>
