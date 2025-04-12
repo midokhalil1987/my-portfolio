@@ -8,12 +8,14 @@ export function StickyCursor() {
   const cursorX = useMotionValue(0);
   const cursorY = useMotionValue(0);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const [mounted, setMounted] = useState(false);
 
   const springConfig = { damping: 20, stiffness: 300 };
   const cursorXSpring = useSpring(cursorX, springConfig);
   const cursorYSpring = useSpring(cursorY, springConfig);
 
   useEffect(() => {
+    setMounted(true);
     const moveCursor = (e: MouseEvent) => {
       cursorX.set(e.clientX - 16);
       cursorY.set(e.clientY - 16);
@@ -40,6 +42,8 @@ export function StickyCursor() {
       document.removeEventListener("mouseleave", handleMouseLeave);
     };
   }, [cursorX, cursorY]);
+
+  if (!mounted) return null;
 
   return (
     <motion.div
