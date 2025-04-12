@@ -1,10 +1,8 @@
 "use client";
 
-import Lottie from "lottie-react";
+import dynamic from "next/dynamic";
 import { Button } from "@/components/ui/button";
 import { GithubIcon, LinkedinIcon, ChevronDown } from "lucide-react";
-import developerAnimation from "@/animations/developer-animation.json";
-import backgroundAnimation from "@/animations/background-animation.json";
 import Link from "next/link";
 import { AboutSection } from "@/components/sections/AboutSection";
 import { SkillsSection } from "@/components/sections/SkillsSection";
@@ -17,6 +15,10 @@ import { LoadingScreen } from "@/components/loading-screen";
 import { StickyCursor } from "@/components/sticky-cursor";
 import { motion } from "framer-motion";
 import { useRef } from "react";
+import developerAnimation from "@/animations/developer-animation.json";
+import backgroundAnimation from "@/animations/background-animation.json";
+
+const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
 
 export default function Home() {
   const contactRef = useRef<HTMLDivElement>(null);
