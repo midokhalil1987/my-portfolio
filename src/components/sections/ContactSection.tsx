@@ -17,7 +17,7 @@ export function ContactSection() {
             Feel free to contact me for any work or suggestions.
           </p>
         </div>
-        <Card className="hover:shadow-md transition-shadow duration-300">
+        <Card className="hover:shadow-md transition-shadow duration-300 py-6">
           <CardHeader>
             <CardTitle className="text-xl text-gray-900 dark:text-white">
               Send a Message

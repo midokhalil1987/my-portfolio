@@ -16,7 +16,7 @@ export function HobbiesSection() {
             (hobby, index) => (
               <Card
                 key={index}
-                className="text-center hover:shadow-md transition-shadow duration-300 dark:bg-gray-700 dark:text-white"
+                className="text-center hover:shadow-md transition-shadow duration-300 dark:bg-gray-700 dark:text-white py-6"
               >
                 <CardHeader>
                   <CardTitle className="text-xl">{hobby}</CardTitle>
