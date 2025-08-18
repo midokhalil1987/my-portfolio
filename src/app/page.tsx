@@ -30,7 +30,6 @@ const StickyCursor = dynamic(
   { ssr: false }
 );
 
-// Import animations directly
 import developerAnimation from "@/animations/developer-animation.json";
 import backgroundAnimation from "@/animations/background-animation.json";
 
