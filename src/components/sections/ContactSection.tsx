@@ -1,32 +1,97 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { PanelCard } from "@/components/ui/panel-card";
 import { ContactForm } from "@/components/forms/ContactForm";
+import { SectionHeader } from "@/components/ui/section-header";
+import { personalInfo } from "@/data/portfolio";
+import { Mail, MapPin, Phone, Briefcase } from "lucide-react";
+import Link from "next/link";
+
+const contactItems = [
+  {
+    href: `mailto:${personalInfo.email}`,
+    icon: Mail,
+    label: personalInfo.email,
+    external: false,
+  },
+  {
+    href: `tel:${personalInfo.phone.replace(/\s/g, "")}`,
+    icon: Phone,
+    label: personalInfo.phone,
+    external: false,
+  },
+  {
+    href: null,
+    icon: MapPin,
+    label: personalInfo.location,
+    external: false,
+  },
+  {
+    href: personalInfo.upwork,
+    icon: Briefcase,
+    label: "Upwork Profile",
+    external: true,
+  },
+];
 
 export function ContactSection() {
   return (
     <section
       id="contact"
-      className="min-h-screen flex items-center justify-center py-16 md:py-24 bg-white/80 dark:bg-gray-700/95 backdrop-blur-sm"
+      className="section-padding px-6 border-t border-border bg-muted/30"
     >
-      <div className="container max-w-6xl mx-auto px-4 md:px-6">
-        <div className="flex flex-col items-center text-center mb-16">
-          <h2 className="text-4xl font-bold tracking-tight mb-4 text-gray-900 dark:text-white">
-            Get In Touch
-          </h2>
-          <div className="w-24 h-1 bg-blue-500 mb-8"></div>
-          <p className="max-w-2xl text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
-            Feel free to contact me for any work or suggestions.
-          </p>
-        </div>
-        <Card className="hover:shadow-md transition-shadow duration-300 py-6">
-          <CardHeader>
-            <CardTitle className="text-xl text-gray-900 dark:text-white">
-              Send a Message
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-6">
+      <div className="max-w-5xl mx-auto">
+        <SectionHeader
+          label="05 — Contact"
+          title="Let's work together"
+          subtitle="Open to remote full-time roles, contract work, and freelance projects."
+        />
+
+        <div className="grid gap-6 lg:grid-cols-5 lg:items-start">
+          <PanelCard title="Reach me" className="lg:col-span-2">
+            <ul className="space-y-1">
+              {contactItems.map((item) => {
+                const Icon = item.icon;
+                const content = (
+                  <>
+                    <span className="flex items-center justify-center w-9 h-9 rounded-lg bg-primary/10 text-primary shrink-0">
+                      <Icon size={16} />
+                    </span>
+                    <span className="text-sm text-muted-foreground group-hover:text-foreground transition-colors break-all">
+                      {item.label}
+                    </span>
+                  </>
+                );
+
+                if (item.href) {
+                  return (
+                    <li key={item.label}>
+                      <Link
+                        href={item.href}
+                        target={item.external ? "_blank" : undefined}
+                        rel={item.external ? "noopener noreferrer" : undefined}
+                        className="group flex items-center gap-3 p-2.5 -mx-2.5 rounded-lg hover:bg-muted/50 transition-colors"
+                      >
+                        {content}
+                      </Link>
+                    </li>
+                  );
+                }
+
+                return (
+                  <li
+                    key={item.label}
+                    className="flex items-center gap-3 p-2.5 -mx-2.5"
+                  >
+                    {content}
+                  </li>
+                );
+              })}
+            </ul>
+          </PanelCard>
+
+          <PanelCard title="Send a message" className="lg:col-span-3">
             <ContactForm />
-          </CardContent>
-        </Card>
+          </PanelCard>
+        </div>
       </div>
     </section>
   );

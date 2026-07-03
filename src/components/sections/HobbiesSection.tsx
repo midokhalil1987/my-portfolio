@@ -1,29 +1,30 @@
-import { Card, CardHeader, CardTitle } from "@/components/ui/card";
+import { SectionHeader } from "@/components/ui/section-header";
+import { hobbies } from "@/data/portfolio";
+import { Gamepad2, BookOpen, Waves, Sparkles } from "lucide-react";
+
+const hobbyIcons: Record<string, React.ReactNode> = {
+  Swimming: <Waves className="w-5 h-5" />,
+  Gaming: <Gamepad2 className="w-5 h-5" />,
+  Reading: <BookOpen className="w-5 h-5" />,
+  "Continuous Learning": <Sparkles className="w-5 h-5" />,
+};
 
 export function HobbiesSection() {
   return (
-    <section className="min-h-screen flex items-center justify-center py-16 md:py-24 dark:bg-gray-900/80 backdrop-blur-sm">
-      <div className="container max-w-6xl mx-auto px-4 md:px-6">
-        <div className="flex flex-col items-center text-center mb-16">
-          <h2 className="text-4xl font-bold tracking-tight mb-4 text-gray-900 dark:text-white">
-            Hobbies & Interests
-          </h2>
-          <div className="w-24 h-1 bg-blue-500 mb-8"></div>
-        </div>
+    <section className="section-padding px-6 border-t border-border">
+      <div className="max-w-5xl mx-auto">
+        <SectionHeader label="04 — Life" title="Beyond code" align="center" />
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-          {["Swimming", "Gaming", "Reading", "Learning new things"].map(
-            (hobby, index) => (
-              <Card
-                key={index}
-                className="text-center hover:shadow-md transition-shadow duration-300 dark:bg-gray-700 dark:text-white py-6"
-              >
-                <CardHeader>
-                  <CardTitle className="text-xl">{hobby}</CardTitle>
-                </CardHeader>
-              </Card>
-            )
-          )}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto">
+          {hobbies.map((hobby) => (
+            <div
+              key={hobby}
+              className="surface-card flex flex-col items-center gap-3 p-6 text-center hover:border-primary/30 transition-colors"
+            >
+              <div className="text-primary">{hobbyIcons[hobby]}</div>
+              <span className="text-sm font-medium">{hobby}</span>
+            </div>
+          ))}
         </div>
       </div>
     </section>

@@ -58,7 +58,7 @@ export function ContactForm() {
     <form onSubmit={formik.handleSubmit} className="space-y-6">
       <div className="space-y-4">
         <div className="relative">
-          <User className="absolute left-3 top-3 h-5 w-5 text-gray-400 dark:text-gray-500" />
+          <User className="absolute left-3 top-3 h-5 w-5 text-muted-foreground" />
           <Input
             id="name"
             name="name"
@@ -80,7 +80,7 @@ export function ContactForm() {
         </div>
 
         <div className="relative">
-          <Mail className="absolute left-3 top-3 h-5 w-5 text-gray-400 dark:text-gray-500" />
+          <Mail className="absolute left-3 top-3 h-5 w-5 text-muted-foreground" />
           <Input
             id="email"
             name="email"
@@ -102,7 +102,7 @@ export function ContactForm() {
         </div>
 
         <div className="relative">
-          <Phone className="absolute left-3 top-3 h-5 w-5 text-gray-400 dark:text-gray-500" />
+          <Phone className="absolute left-3 top-3 h-5 w-5 text-muted-foreground" />
           <Input
             id="mobile"
             name="mobile"
@@ -124,7 +124,7 @@ export function ContactForm() {
         </div>
 
         <div className="relative">
-          <MessageSquare className="absolute left-3 top-3 h-5 w-5 text-gray-400 dark:text-gray-500" />
+          <MessageSquare className="absolute left-3 top-3 h-5 w-5 text-muted-foreground" />
           <Textarea
             id="description"
             name="description"
@@ -148,7 +148,7 @@ export function ContactForm() {
 
       <Button
         type="submit"
-        className="w-full bg-blue-500 hover:bg-blue-600 text-white dark:bg-blue-600 dark:hover:bg-blue-700 cursor-pointer"
+        className="w-full rounded-lg"
         disabled={formik.isSubmitting}
       >
         {formik.isSubmitting ? "Sending..." : "Send Message"}
