@@ -4,13 +4,14 @@ export const personalInfo = {
   tagline:
     "Building production web & mobile apps with React, Next.js, TypeScript, and Java/Spring Boot.",
   summary:
-    "Full Stack Developer with 4+ years of professional experience building production web and mobile applications. Skilled in React, TypeScript, Next.js, AngularJS, Java 21, Spring Boot, PostgreSQL, and React Native. Delivered 10+ shipped projects across agency and product teams, with strong remote collaboration in US and MENA markets.",
+    "Full Stack Developer specializing in React and Spring Boot. Experienced in building high-performance websites and mobile applications.",
   email: "mahmoudkhalil6987@gmail.com",
   phone: "+20 109 292 0911",
   location: "Alexandria, Egypt",
   github: "https://github.com/midokhalil1987",
   linkedin: "https://www.linkedin.com/in/mahmoud-khalil-27846341b/",
   upwork: "https://www.upwork.com/freelancers/~01f5f84cd37a63af10",
+  siteUrl: "https://my-portfolio-nine-blond.vercel.app",
 };
 
 export const experience = [
@@ -41,7 +42,7 @@ export const experience = [
 ];
 
 export const education = {
-  degree: "Ph.D. in Accounting",
+  degree: "Bachelor's Degree in Accounting",
   institution: "Faculty of Commerce, Alexandria University",
   date: "September 2011",
   note: "Career transition to software development in 2022; 4+ years professional engineering experience.",
@@ -52,44 +53,57 @@ export const languages = [
   { name: "English", level: "B2 — Upper Intermediate" },
 ];
 
-export const skillCategories = [
+export type Skill = {
+  name: string;
+  icon: string;
+};
+
+export const skillCategories: {
+  title: "Frontend" | "Backend" | "Mobile" | "Tools";
+  skills: Skill[];
+}[] = [
   {
     title: "Frontend",
     skills: [
-      "React",
-      "Next.js",
-      "TypeScript",
-      "AngularJS",
-      "React Native",
-      "Tailwind CSS",
-      "Redux Toolkit",
-      "HTML/CSS",
+      { name: "React", icon: "react" },
+      { name: "Next.js", icon: "nextdotjs" },
+      { name: "TypeScript", icon: "typescript" },
+      { name: "AngularJS", icon: "angularjs" },
+      { name: "Tailwind CSS", icon: "tailwindcss" },
+      { name: "Redux Toolkit", icon: "redux" },
+      { name: "HTML/CSS", icon: "html5" },
+      { name: "JavaScript", icon: "javascript" },
     ],
   },
   {
     title: "Backend",
     skills: [
-      "Java 21",
-      "Spring Boot",
-      "Spring Data JPA",
-      "Hibernate 6",
-      "PostgreSQL",
-      "Flyway",
-      "Node.js",
-      "REST APIs",
+      { name: "Java 21", icon: "openjdk" },
+      { name: "Spring Boot", icon: "springboot" },
+      { name: "PostgreSQL", icon: "postgresql" },
+      { name: "Hibernate", icon: "hibernate" },
+      { name: "Node.js", icon: "nodedotjs" },
+      { name: "REST APIs", icon: "openapiinitiative" },
+      { name: "Flyway", icon: "flyway" },
+      { name: "Maven", icon: "apachemaven" },
     ],
   },
   {
-    title: "Tools & Practices",
+    title: "Mobile",
     skills: [
-      "Git",
-      "Maven",
-      "Webpack",
-      "Agile/Scrum",
-      "Responsive Design",
-      "SEO",
-      "Cursor",
-      "GitHub Copilot",
+      { name: "React Native", icon: "react" },
+      { name: "Expo", icon: "expo" },
+    ],
+  },
+  {
+    title: "Tools",
+    skills: [
+      { name: "Git", icon: "git" },
+      { name: "GitHub", icon: "github" },
+      { name: "Webpack", icon: "webpack" },
+      { name: "Cursor", icon: "cursor" },
+      { name: "Agile/Scrum", icon: "jira" },
+      { name: "Vercel", icon: "vercel" },
     ],
   },
 ];
@@ -103,6 +117,7 @@ export const hobbies = [
 
 export type Project = {
   title: string;
+  /** Short line: "E-commerce platform | React, Next.js" */
   description: string;
   link?: string;
   github?: string;
@@ -114,8 +129,7 @@ export type Project = {
 export const projects: Project[] = [
   {
     title: "Furns E-Commerce",
-    description:
-      "Next.js furniture store with Snipcart integration, responsive product catalog, and checkout flow.",
+    description: "E-commerce platform | Next.js, Snipcart, Tailwind",
     link: "https://furns-snip-cart-next-js.vercel.app/",
     image: "/projects/furns.png",
     tags: ["Next.js", "Snipcart", "Tailwind"],
@@ -123,8 +137,7 @@ export const projects: Project[] = [
   },
   {
     title: "Time Tracker",
-    description:
-      "Productivity app for tracking work hours with a clean, intuitive interface.",
+    description: "Productivity app | React, Next.js, TypeScript",
     link: "https://tracker-pied-five.vercel.app/",
     image: "/projects/time-tracker.png",
     tags: ["React", "Next.js", "TypeScript"],
@@ -132,8 +145,7 @@ export const projects: Project[] = [
   },
   {
     title: "Resume Web App",
-    description:
-      "Interactive resume website with print-ready layouts and modern typography.",
+    description: "Interactive resume site | Next.js, Tailwind CSS",
     link: "https://resume-new-three.vercel.app/",
     image: "/projects/resume.png",
     tags: ["Next.js", "Tailwind CSS"],
@@ -141,8 +153,7 @@ export const projects: Project[] = [
   },
   {
     title: "GE-Techs Website",
-    description:
-      "Company website for a software agency showcasing services and portfolio.",
+    description: "Agency company website | React, Next.js",
     link: "https://ge-techs.com/",
     github: "https://github.com/GE-Techs/ge-techs-website",
     image: "/projects/ge-techs.png",
@@ -151,8 +162,7 @@ export const projects: Project[] = [
   },
   {
     title: "Gold.sa",
-    description:
-      "E-commerce platform for gold products with rich product listings and checkout.",
+    description: "E-commerce platform | React, Next.js",
     link: "https://gold.sa/",
     github: "https://github.com/GE-Techs/gold-sa-website",
     image: "/projects/gold-sa.png",
@@ -161,8 +171,7 @@ export const projects: Project[] = [
   },
   {
     title: "Zoric",
-    description:
-      "Modern web application with responsive design and interactive UI components.",
+    description: "Modern web app | React, Next.js",
     link: "https://zoric-test.vercel.app/",
     image: "/projects/zoric.png",
     tags: ["React", "Next.js"],
@@ -170,7 +179,7 @@ export const projects: Project[] = [
   },
   {
     title: "Gasgo Admin Dashboard",
-    description: "Admin dashboard for managing Gasgo fuel station operations.",
+    description: "Admin dashboard | React, REST APIs",
     link: "http://dash.gasgo.matrixzone.net",
     image: "/projects/gasgo-admin.png",
     tags: ["React", "Dashboard"],
@@ -178,7 +187,7 @@ export const projects: Project[] = [
   },
   {
     title: "Gasgo Station Dashboard",
-    description: "Station-level dashboard for real-time fuel station monitoring.",
+    description: "Station monitoring dashboard | React",
     link: "http://stationdash.gasgo.matrixzone.net",
     image: "/projects/gasgo-station.png",
     tags: ["React", "Dashboard"],
@@ -186,8 +195,7 @@ export const projects: Project[] = [
   },
   {
     title: "Gov-SA Frontend",
-    description:
-      "Saudi government services platform frontend with accessibility-focused design.",
+    description: "Government services platform | React",
     link: "https://my.gov.sa/",
     github: "https://gitlab.sharedt.com/gov.sa/gov-sa-frontend/",
     image: "/projects/gov-sa.png",
@@ -196,8 +204,7 @@ export const projects: Project[] = [
   },
   {
     title: "B2B Mobile Auction",
-    description:
-      "US-based B2B auction platform — AngularJS frontend with Java/Spring Boot backend.",
+    description: "B2B auction platform | AngularJS, Java, Spring Boot",
     github: "https://github.com/B2B-Mobile-Auction/b2b-mobile-ui/",
     image: "/projects/b2b-auction.png",
     tags: ["AngularJS", "Java", "Spring Boot"],
@@ -205,8 +212,7 @@ export const projects: Project[] = [
   },
   {
     title: "Haseb Platform",
-    description:
-      "Production financial and accounting frontend for business operations.",
+    description: "Financial & accounting frontend | React",
     github: "https://github.com/haseb-io/haseb-frontend",
     image: "/projects/haseb.png",
     tags: ["React", "Finance"],
@@ -214,7 +220,7 @@ export const projects: Project[] = [
   },
   {
     title: "Eventy Web",
-    description: "Event management web application for planning and coordination.",
+    description: "Event management app | React",
     github: "https://github.com/GE-Techs/eventy-web",
     image: "/projects/eventy.png",
     tags: ["React"],
@@ -222,7 +228,7 @@ export const projects: Project[] = [
   },
   {
     title: "Brush Web",
-    description: "Creative web platform with modern UI patterns.",
+    description: "Creative web platform | React",
     github: "https://github.com/GE-Techs/brush",
     image: "/projects/brush.png",
     tags: ["React"],
@@ -230,7 +236,7 @@ export const projects: Project[] = [
   },
   {
     title: "Mostaneer (Enarah)",
-    description: "Client web application built for the Enarah platform.",
+    description: "Client web application | React",
     github: "https://github.com/GE-Techs/enarah",
     image: "/projects/mostaneer.png",
     tags: ["React"],
@@ -238,7 +244,7 @@ export const projects: Project[] = [
   },
   {
     title: "MERN Social App",
-    description: "Full-stack social media application with MongoDB and Express.",
+    description: "Social media app | React, Node.js, MongoDB",
     github: "https://github.com/midokhalil1987/mern-social-app",
     image: "/projects/social-app.png",
     tags: ["MERN", "MongoDB"],
@@ -246,7 +252,7 @@ export const projects: Project[] = [
   },
   {
     title: "Uber Eats Clone",
-    description: "Food delivery app clone with React Native mobile interface.",
+    description: "Food delivery app | React Native",
     github: "https://github.com/midokhalil1987/uber-eats-APP",
     image: "/projects/uber-eats.png",
     tags: ["React Native"],
@@ -254,7 +260,7 @@ export const projects: Project[] = [
   },
   {
     title: "Next-Auth",
-    description: "Authentication implementation with NextAuth.js patterns.",
+    description: "Auth implementation | Next.js, NextAuth",
     github: "https://github.com/midokhalil1987/nextauth",
     image: "/projects/next-auth.png",
     tags: ["Next.js", "Auth"],
@@ -262,7 +268,7 @@ export const projects: Project[] = [
   },
   {
     title: "Login App Auth",
-    description: "Secure login and registration flow with JWT authentication.",
+    description: "Login & registration flow | React, JWT",
     github: "https://github.com/midokhalil1987/loginAppAuth",
     image: "/projects/login-auth.png",
     tags: ["React", "JWT"],

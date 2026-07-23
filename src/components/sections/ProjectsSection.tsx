@@ -1,7 +1,6 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { SectionHeader } from "@/components/ui/section-header";
 import { ExternalLink, GithubIcon } from "lucide-react";
@@ -50,6 +49,73 @@ function ProjectImage({
   );
 }
 
+function ProjectLinks({
+  link,
+  github,
+  compact = false,
+}: {
+  link?: string;
+  github?: string;
+  compact?: boolean;
+}) {
+  if (!link && !github) return null;
+
+  if (compact) {
+    return (
+      <div className="flex gap-1 shrink-0">
+        {link && (
+          <Link
+            href={link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-1.5 rounded-md hover:bg-muted text-muted-foreground hover:text-foreground transition-colors"
+            aria-label="Live demo"
+          >
+            <ExternalLink size={14} />
+          </Link>
+        )}
+        {github && (
+          <Link
+            href={github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-1.5 rounded-md hover:bg-muted text-muted-foreground hover:text-foreground transition-colors"
+            aria-label="GitHub"
+          >
+            <GithubIcon size={14} />
+          </Link>
+        )}
+      </div>
+    );
+  }
+
+  return (
+    <div className="flex gap-2 pt-1">
+      {link && (
+        <Button asChild size="sm" className="flex-1 rounded-lg">
+          <Link href={link} target="_blank" rel="noopener noreferrer">
+            <ExternalLink size={14} />
+            Live demo
+          </Link>
+        </Button>
+      )}
+      {github && (
+        <Button
+          asChild
+          size="sm"
+          variant={link ? "outline" : "default"}
+          className={link ? "rounded-lg" : "flex-1 rounded-lg"}
+        >
+          <Link href={github} target="_blank" rel="noopener noreferrer">
+            <GithubIcon size={14} />
+            {link ? "Code" : "GitHub"}
+          </Link>
+        </Button>
+      )}
+    </div>
+  );
+}
+
 function ProjectCard({
   project,
   variant = "featured",
@@ -61,7 +127,7 @@ function ProjectCard({
 
   if (variant === "compact") {
     return (
-      <div className="group surface-card overflow-hidden hover:border-primary/30 transition-colors">
+      <div className="group surface-card overflow-hidden hover:border-primary/30 transition-colors flex flex-col">
         <BrowserFrame>
           <div className="relative h-36 bg-muted overflow-hidden">
             <ProjectImage
@@ -72,30 +138,18 @@ function ProjectCard({
             />
           </div>
         </BrowserFrame>
-        <div className="p-4 flex items-center justify-between gap-2">
-          <h3 className="text-sm font-medium truncate">{project.title}</h3>
-          <div className="flex gap-1 shrink-0 opacity-0 group-hover:opacity-100 transition-opacity">
-            {project.link && (
-              <Link
-                href={project.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-1.5 rounded-md hover:bg-muted text-muted-foreground hover:text-foreground transition-colors"
-              >
-                <ExternalLink size={14} />
-              </Link>
-            )}
-            {project.github && (
-              <Link
-                href={project.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-1.5 rounded-md hover:bg-muted text-muted-foreground hover:text-foreground transition-colors"
-              >
-                <GithubIcon size={14} />
-              </Link>
-            )}
+        <div className="p-4 flex flex-col gap-2 flex-1">
+          <div className="flex items-start justify-between gap-2">
+            <h3 className="text-sm font-medium leading-snug">{project.title}</h3>
+            <ProjectLinks
+              link={project.link}
+              github={project.github}
+              compact
+            />
           </div>
+          <p className="text-xs text-muted-foreground leading-relaxed">
+            {project.description}
+          </p>
         </div>
       </div>
     );
@@ -122,44 +176,7 @@ function ProjectCard({
           </p>
         </div>
 
-        <div className="flex flex-wrap gap-1.5 mt-auto">
-          {project.tags.map((tag) => (
-            <Badge
-              key={tag}
-              variant="outline"
-              className="text-xs font-normal text-muted-foreground"
-            >
-              {tag}
-            </Badge>
-          ))}
-        </div>
-
-        <div className="flex gap-2 pt-1">
-          {project.link && (
-            <Button asChild size="sm" className="flex-1 rounded-lg">
-              <Link
-                href={project.link}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <ExternalLink size={14} />
-                Live demo
-              </Link>
-            </Button>
-          )}
-          {project.github && (
-            <Button asChild size="sm" variant="outline" className="rounded-lg">
-              <Link
-                href={project.github}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <GithubIcon size={14} />
-                Code
-              </Link>
-            </Button>
-          )}
-        </div>
+        <ProjectLinks link={project.link} github={project.github} />
       </div>
     </article>
   );
@@ -167,12 +184,12 @@ function ProjectCard({
 
 export function ProjectsSection() {
   return (
-    <section id="projects" className="section-padding px-6 border-t border-border">
+    <section id="projects" className="section-padding px-6">
       <div className="max-w-5xl mx-auto">
         <SectionHeader
           label="02 — Work"
           title="Selected projects"
-          subtitle="Production apps and client work — live demos where available."
+          subtitle="Production apps and client work — live demos and source where available."
         />
 
         <Tabs defaultValue="featured" className="w-full">
@@ -194,7 +211,7 @@ export function ProjectsSection() {
           </TabsContent>
 
           <TabsContent value="all">
-            <div className="grid gap-4 grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               {allProjects.map((project) => (
                 <ProjectCard
                   key={project.title}

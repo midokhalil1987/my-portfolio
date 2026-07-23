@@ -11,6 +11,8 @@ import { HobbiesSection } from "@/components/sections/HobbiesSection";
 import { ContactSection } from "@/components/sections/ContactSection";
 import { Navbar } from "@/components/navbar";
 import { BackToTop } from "@/components/back-to-top";
+import { InteractiveBackground } from "@/components/interactive-background";
+import { SectionDivider } from "@/components/ui/section-divider";
 import { personalInfo } from "@/data/portfolio";
 import { useState, useEffect } from "react";
 
@@ -34,18 +36,25 @@ export default function Home() {
   return (
     <>
       <LoadingScreen />
+      <InteractiveBackground />
       <Navbar />
       <BackToTop />
 
-      <main className="relative">
+      <main className="relative z-10">
         <HeroSection />
+        <SectionDivider />
         <AboutSection />
+        <SectionDivider />
         <ProjectsSection />
+        <SectionDivider />
         <SkillsSection />
+        <SectionDivider />
         <HobbiesSection />
+        <SectionDivider />
         <ContactSection />
+        <SectionDivider />
 
-        <footer className="border-t border-border py-10 px-6">
+        <footer className="py-10 px-6">
           <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
             <p>
               © {new Date().getFullYear()} {personalInfo.name}

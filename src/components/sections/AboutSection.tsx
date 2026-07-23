@@ -1,15 +1,20 @@
 import { PanelCard } from "@/components/ui/panel-card";
 import { SectionHeader } from "@/components/ui/section-header";
-import { experience, education, languages } from "@/data/portfolio";
+import {
+  personalInfo,
+  experience,
+  education,
+  languages,
+} from "@/data/portfolio";
 
 export function AboutSection() {
   return (
-    <section id="about" className="section-padding px-6 border-t border-border">
+    <section id="about" className="section-padding px-6">
       <div className="max-w-5xl mx-auto">
         <SectionHeader
           label="01 — About"
           title="Building software that ships"
-          subtitle="4+ years delivering production web and mobile applications for agency clients and product teams across the US and MENA regions."
+          subtitle={personalInfo.summary}
         />
 
         <div className="grid gap-6 lg:grid-cols-5">

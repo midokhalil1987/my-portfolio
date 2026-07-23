@@ -14,15 +14,52 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const siteUrl = "https://my-portfolio-nine-blond.vercel.app";
+
 export const metadata: Metadata = {
-  title: "Mahmoud Khalil — Full Stack Developer",
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: "Mahmoud Khalil | Full Stack Developer — React, Next.js, Spring Boot",
+    template: "%s | Mahmoud Khalil",
+  },
   description:
-    "Full Stack Developer with 4+ years building production web and mobile apps. React, Next.js, TypeScript, Java/Spring Boot.",
+    "Full Stack Developer specializing in React and Spring Boot. Building high-performance websites and mobile apps. 4+ years experience across US and MENA markets.",
+  keywords: [
+    "Mahmoud Khalil",
+    "Full Stack Developer",
+    "React Developer",
+    "Next.js",
+    "Spring Boot",
+    "TypeScript",
+    "React Native",
+    "Java Developer",
+    "Portfolio",
+    "Alexandria",
+    "Remote Developer",
+  ],
+  authors: [{ name: "Mahmoud Khalil", url: siteUrl }],
+  creator: "Mahmoud Khalil",
   openGraph: {
-    title: "Mahmoud Khalil — Full Stack Developer",
-    description:
-      "Full Stack Developer with 4+ years building production web and mobile apps.",
     type: "website",
+    locale: "en_US",
+    url: siteUrl,
+    siteName: "Mahmoud Khalil Portfolio",
+    title: "Mahmoud Khalil | Full Stack Developer",
+    description:
+      "Full Stack Developer specializing in React and Spring Boot. High-performance web and mobile applications.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Mahmoud Khalil | Full Stack Developer",
+    description:
+      "Full Stack Developer specializing in React and Spring Boot. High-performance web and mobile applications.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  alternates: {
+    canonical: siteUrl,
   },
 };
 
@@ -33,9 +70,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body
-        className={`${inter.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${inter.variable} ${geistMono.variable} antialiased`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"

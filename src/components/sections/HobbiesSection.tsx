@@ -11,7 +11,7 @@ const hobbyIcons: Record<string, React.ReactNode> = {
 
 export function HobbiesSection() {
   return (
-    <section className="section-padding px-6 border-t border-border">
+    <section className="section-padding px-6">
       <div className="max-w-5xl mx-auto">
         <SectionHeader label="04 — Life" title="Beyond code" align="center" />
 

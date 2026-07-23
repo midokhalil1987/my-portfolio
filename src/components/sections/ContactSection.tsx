@@ -36,7 +36,7 @@ export function ContactSection() {
   return (
     <section
       id="contact"
-      className="section-padding px-6 border-t border-border bg-muted/30"
+      className="section-padding px-6 bg-muted/30"
     >
       <div className="max-w-5xl mx-auto">
         <SectionHeader
