@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     template: "%s | Mahmoud Khalil",
   },
   description:
-    "Full Stack Developer specializing in React and Spring Boot. Building high-performance websites and mobile apps. 4+ years experience across US and MENA markets.",
+    "Full Stack Developer specializing in React, Next.js, and Spring Boot. Building high-performance websites and mobile apps. Available for new remote projects.",
   keywords: [
     "Mahmoud Khalil",
     "Full Stack Developer",

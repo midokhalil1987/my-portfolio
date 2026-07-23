@@ -43,13 +43,18 @@ export function ContactForm() {
         });
 
         if (!response.ok) {
-          throw new Error("Failed to send email");
+          const data = await response.json().catch(() => null);
+          throw new Error(data?.error || "Failed to send email");
         }
 
         toast.success("Your message has been sent successfully!");
         resetForm();
-      } catch {
-        toast.error("Failed to send message. Please try again later.");
+      } catch (error) {
+        toast.error(
+          error instanceof Error
+            ? error.message
+            : "Failed to send message. Please try again later."
+        );
       }
     },
   });

@@ -4,7 +4,21 @@ export const personalInfo = {
   tagline:
     "Building production web & mobile apps with React, Next.js, TypeScript, and Java/Spring Boot.",
   summary:
-    "Full Stack Developer specializing in React and Spring Boot. Experienced in building high-performance websites and mobile applications.",
+    "Full Stack Developer specializing in React, Next.js, and Spring Boot. Experienced in building high-performance websites and mobile applications. I love turning ideas into digital reality.",
+  aboutHighlights: [
+    {
+      title: "4+ years experience",
+      description: "Building production web and mobile applications",
+    },
+    {
+      title: "Always learning",
+      description: "Passionate about continuous growth and modern tech",
+    },
+    {
+      title: "Open to work",
+      description: "Available for new remote projects and collaborations",
+    },
+  ],
   email: "mahmoudkhalil6987@gmail.com",
   phone: "+20 109 292 0911",
   location: "Alexandria, Egypt",

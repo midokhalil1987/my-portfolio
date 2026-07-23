@@ -6,6 +6,9 @@ import {
   education,
   languages,
 } from "@/data/portfolio";
+import { Briefcase, Sparkles, Rocket } from "lucide-react";
+
+const highlightIcons = [Briefcase, Sparkles, Rocket] as const;
 
 export function AboutSection() {
   return (
@@ -13,9 +16,31 @@ export function AboutSection() {
       <div className="max-w-5xl mx-auto">
         <SectionHeader
           label="01 — About"
-          title="Building software that ships"
+          title="About me"
           subtitle={personalInfo.summary}
         />
+
+        <div className="grid gap-4 sm:grid-cols-3 mb-10">
+          {personalInfo.aboutHighlights.map((item, i) => {
+            const Icon = highlightIcons[i] ?? Sparkles;
+            return (
+              <div
+                key={item.title}
+                className="surface-card p-5 hover:border-primary/30 transition-colors"
+              >
+                <div className="flex items-center gap-2.5 mb-2">
+                  <span className="flex items-center justify-center size-8 rounded-lg bg-primary/10 text-primary">
+                    <Icon size={15} />
+                  </span>
+                  <h3 className="text-sm font-semibold">{item.title}</h3>
+                </div>
+                <p className="text-xs text-muted-foreground leading-relaxed pl-[2.625rem]">
+                  {item.description}
+                </p>
+              </div>
+            );
+          })}
+        </div>
 
         <div className="grid gap-6 lg:grid-cols-5">
           <PanelCard title="Work Experience" className="lg:col-span-3">
