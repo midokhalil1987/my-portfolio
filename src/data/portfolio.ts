@@ -25,7 +25,7 @@ export const personalInfo = {
   github: "https://github.com/midokhalil1987",
   linkedin: "https://www.linkedin.com/in/mahmoud-khalil-27846341b/",
   upwork: "https://www.upwork.com/freelancers/~01f5f84cd37a63af10",
-  siteUrl: "https://my-portfolio-nine-blond.vercel.app",
+  siteUrl: "https://my-portfolio-mahmoud.vercel.app",
 };
 
 export const experience = [
